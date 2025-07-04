@@ -34,7 +34,15 @@ export default function TopNavbar() {
             </NavigationMenuContent>
           </NavigationMenuItem> */}
           <NavigationMenuItem>
-            <NavigationMenuLink href="/events">Events</NavigationMenuLink>
+            <NavigationMenuLink href="/">Home</NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/big-events">
+              Big events
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/ysws">YSWS</NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

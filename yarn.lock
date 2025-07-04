@@ -1283,6 +1283,7 @@ __metadata:
     "@types/react-dom": "npm:^19"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
+    instant-yaml: "npm:^0.1.5"
     lucide-react: "npm:^0.525.0"
     next: "npm:15.3.5"
     next-themes: "npm:^0.4.6"
@@ -1294,6 +1295,13 @@ __metadata:
     typescript: "npm:^5"
   languageName: unknown
   linkType: soft
+
+"instant-yaml@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "instant-yaml@npm:0.1.5"
+  checksum: 10c0/d4fa89c424e63a342915e2cb8272997a178d63871cfaab80a737545c8c60ea090e7146967bcd7e9db4629237a639ca5d006b2c897444396b155913512fd481f4
+  languageName: node
+  linkType: hard
 
 "is-arrayish@npm:^0.3.1":
   version: 0.3.2
