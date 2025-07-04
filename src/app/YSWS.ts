@@ -3,14 +3,22 @@ function slugify(string: string): string {
 }
 
 function slugFromWebsite(website: URL): string {
-  const domainParts = website.hostname.split(".")
-  if (domainParts[1] !== "hackclub") {
-    console.warn(
-      `Domain does not look like a Hack Club domain: ${website.hostname}`
-    )
-    return slugify(website.hostname)
+  const pathParts = website.pathname.split("/").filter(Boolean)
+  if (website.hostname === "github.com") {
+    // e.g. https://github.com/hackclub/infill
+    return slugify(pathParts[1])
   }
-  return slugify(domainParts[0])
+  if (website.hostname === "hackclub.github.io") {
+    // e.g. http://hackclub.github.io/hacklet
+    return slugify(pathParts[0])
+  }
+  const domainParts = website.hostname.split(".")
+  if (domainParts[1] === "hackclub") {
+    // e.g. https://visioneer.hackclub.com
+    return slugify(domainParts[0])
+  }
+  console.warn(`Domain is not in a recognised format: ${website.hostname}`)
+  return slugify(website.hostname)
 }
 
 export class YSWS {
