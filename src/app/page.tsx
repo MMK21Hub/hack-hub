@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
             .
           </li>
           <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+            Save and see your changes instantly!
           </li>
         </ol>
 
@@ -99,5 +99,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
+  )
 }
