@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
+import { APP_NAME } from "./brand"
 import Image from "next/image"
 
 export default function TopNavbar() {
@@ -22,7 +23,7 @@ export default function TopNavbar() {
           height={40}
           className="rounded-full"
         /> */}
-        <span className="ml-2 text-lg font-bold">Hack Hub</span>
+        <span className="ml-2 text-lg font-bold">{APP_NAME}</span>
       </div>
       <NavigationMenu className="">
         <NavigationMenuList>
