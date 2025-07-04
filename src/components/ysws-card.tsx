@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, SlackIcon } from "lucide-react"
+import { ExternalLink, Globe, SlackIcon } from "lucide-react"
 
 interface Props {
   ysws: YSWSEvent
@@ -53,25 +53,24 @@ export default function YSWSEventCard({ ysws }: Props) {
           </p>
         )}
       </CardContent>
-      {/* <CardFooter className="flex gap-2 justify-end">
-        <div>
-          {ysws.website && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={ysws.website}>
-                Website <ExternalLink className="ml-1 w-4 h-4" />
-              </a>
-            </Button>
-          )}
-          {ysws.slack && (
-            <Button variant="outline" size="sm" asChild>
+      <CardFooter className="flex gap-2 justify-end">
+        {ysws.website && (
+          <Button variant="outline" size="sm" asChild>
+            <a href={ysws.website}>
+              <Globe />
+              Website <ExternalLink className="ml-1 w-4 h-4" />
+            </a>
+          </Button>
+        )}
+        {ysws.slack && (
+          <Button variant="outline" size="sm" asChild>
+            <a href={ysws.slack}>
               <SlackIcon />
-              <a href={ysws.slack}>
-                Slack channel <ExternalLink className="ml-1 w-4 h-4" />
-              </a>
-            </Button>
-          )}
-        </div>
-      </CardFooter> */}
+              Slack channel <ExternalLink className="ml-1 w-4 h-4" />
+            </a>
+          </Button>
+        )}
+      </CardFooter>
     </Card>
   )
 }
