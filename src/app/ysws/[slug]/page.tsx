@@ -23,5 +23,11 @@ export default function Page({ params }: { params: { slug: string } }) {
     //   </Alert>
     // )
   }
-  return <div>My Post: {slug}</div>
+  return (
+    <div className="mx-4 mt-4">
+      <h1 className="w-full text-center font-bold text-6xl mt-12 mb-4">
+        {ysws.name}
+      </h1>
+    </div>
+  )
 }
