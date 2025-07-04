@@ -9,7 +9,7 @@ interface YSWSEvent {
   website?: string
   slack?: string
   slackChannel?: string
-  status: YSWSStatus
+  status?: YSWSStatus
   deadline?: string // ISO date string
   ended?: string // ISO date string (for ended events only)
   participants?: number

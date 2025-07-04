@@ -1,11 +1,11 @@
-import { YAML } from "instant-yaml"
+import { parse as parseYAML } from "yaml"
 
 export async function fetchYSWSCatalog(): Promise<YSWSCatalog> {
   const response = await fetch("https://ysws.hackclub.com/data.yml")
   if (!response.ok)
     throw new Error(`Failed to fetch YSWS catalog: ${response.statusText}`)
   const text = await response.text()
-  const data = YAML.parse(text)
+  const data = parseYAML(text)
 
   // Quick sanity checks
   if (!data || typeof data !== "object")
