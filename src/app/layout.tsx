@@ -37,7 +37,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TopNavbar />
-          {children}
+          <div className="pb-16">{children}</div>
         </ThemeProvider>
       </body>
     </html>

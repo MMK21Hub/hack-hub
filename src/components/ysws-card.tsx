@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { YSWS } from "@/app/YSWS"
 import { ExternalLink, Globe, SlackIcon } from "lucide-react"
 
 interface Props {
-  ysws: YSWSEvent
+  ysws: YSWS
 }
 
 function statusText(status?: YSWSStatus): string {
@@ -26,7 +27,9 @@ export default function YSWSEventCard({ ysws }: Props) {
     <Card className="w-full max-w-lg shadow-lg rounded-2xl border-muted">
       <CardHeader>
         <CardTitle className="text-lg flex justify-between items-center">
-          <h2>{ysws.name}</h2>
+          <h2>
+            <a href={ysws.pageLink()}>{ysws.name}</a>
+          </h2>
           <Badge
             variant={
               ysws.status === "active"
@@ -61,7 +64,7 @@ export default function YSWSEventCard({ ysws }: Props) {
       <CardFooter className="flex flex-wrap gap-2 justify-end">
         {ysws.website && (
           <Button variant="outline" size="sm" asChild>
-            <a href={ysws.website}>
+            <a href={ysws.website.toString()}>
               <Globe />
               Website <ExternalLink className="ml-1 w-4 h-4" />
             </a>

@@ -2,7 +2,7 @@
 // See https://ysws.hackclub.com/data.yml
 type YSWSStatus = "active" | "ended" | "draft"
 
-interface YSWSEvent {
+interface YSWSCatalogItem {
   name: string
   description: string
   detailedDescription?: string
@@ -19,7 +19,7 @@ interface YSWSEvent {
 }
 
 interface YSWSCatalog {
-  limitedTime: YSWSEvent[]
-  indefinite: YSWSEvent[]
-  drafts: YSWSEvent[]
+  limitedTime: YSWSCatalogItem[]
+  indefinite: YSWSCatalogItem[]
+  drafts: YSWSCatalogItem[]
 }
