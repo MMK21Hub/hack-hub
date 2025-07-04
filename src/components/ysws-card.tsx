@@ -15,13 +15,6 @@ interface Props {
   ysws: YSWS
 }
 
-function statusText(status?: YSWSStatus): string {
-  if (status === "active") return "Active"
-  if (status === "ended") return "Ended"
-  if (status === "draft") return "Draft"
-  return "Unknown"
-}
-
 export default function YSWSEventCard({ ysws }: Props) {
   return (
     <Card className="w-full max-w-lg shadow-lg rounded-2xl border-muted">
@@ -44,7 +37,7 @@ export default function YSWSEventCard({ ysws }: Props) {
                 : ""
             }
           >
-            {statusText(ysws.status)}
+            {ysws.statusText()}
           </Badge>
         </CardTitle>
       </CardHeader>

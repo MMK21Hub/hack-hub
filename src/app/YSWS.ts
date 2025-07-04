@@ -59,4 +59,11 @@ export class YSWS {
   pageLink() {
     return `/ysws/${this.slug}`
   }
+
+  statusText(): string {
+    if (this.status === "active") return "Active"
+    if (this.status === "ended") return "Ended"
+    if (this.status === "draft") return "Draft"
+    return "Unknown"
+  }
 }
