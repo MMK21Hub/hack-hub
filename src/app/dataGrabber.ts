@@ -1,4 +1,5 @@
 import { parse as parseYAML } from "yaml"
+import { YSWS } from "./YSWS"
 
 export async function fetchYSWSCatalog(): Promise<YSWSCatalog> {
   const response = await fetch("https://ysws.hackclub.com/data.yml")
@@ -16,4 +17,14 @@ export async function fetchYSWSCatalog(): Promise<YSWSCatalog> {
     throw new Error("Invalid YSWS catalog format")
   // It's probably fine now :shrug:
   return data as any as YSWSCatalog
+}
+
+let yswsPromise: Promise<YSWS[]> | null = null
+
+export async function getYSWSItems(): Promise<YSWS[]> {
+  if (yswsPromise) return yswsPromise
+  yswsPromise = fetchYSWSCatalog().then((catalog) =>
+    catalog.limitedTime.concat(catalog.indefinite).map((ysws) => new YSWS(ysws))
+  )
+  return yswsPromise
 }
