@@ -8,26 +8,17 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
-
-export interface YSWSEvent {
-  name: string
-  description: string
-  detailedDescription?: string
-  website?: string
-  slack?: string
-  slackChannel?: string
-  status: "active" | "ended" | "draft"
-  deadline?: string
-  ended?: string
-  participants?: number
-  requirements?: string[]
-  steps?: string[]
-  details?: string[]
-}
+import { ExternalLink, SlackIcon } from "lucide-react"
 
 interface Props {
   ysws: YSWSEvent
+}
+
+function statusText(status?: YSWSStatus): string {
+  if (status === "active") return "Active"
+  if (status === "ended") return "Ended"
+  if (status === "draft") return "Draft"
+  return "Unknown"
 }
 
 export default function YSWSEventCard({ ysws }: Props) {
@@ -45,7 +36,7 @@ export default function YSWSEventCard({ ysws }: Props) {
                 : "secondary"
             }
           >
-            {ysws.status}
+            {statusText(ysws.status)}
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -53,31 +44,34 @@ export default function YSWSEventCard({ ysws }: Props) {
         <p className="text-sm text-muted-foreground">{ysws.description}</p>
         {ysws.deadline && (
           <p className="text-xs text-muted-foreground">
-            Deadline: {new Date(ysws.deadline).toLocaleDateString()}
+            Ends {new Date(ysws.deadline).toLocaleDateString()}
           </p>
         )}
         {ysws.participants !== undefined && (
           <p className="text-xs text-muted-foreground">
-            Participants: {ysws.participants.toLocaleString()}
+            {ysws.participants.toLocaleString()} participants
           </p>
         )}
       </CardContent>
-      <CardFooter className="flex gap-2 justify-end">
-        {ysws.website && (
-          <Button variant="outline" size="sm" asChild>
-            <a href={ysws.website} target="_blank" rel="noopener noreferrer">
-              Website <ExternalLink className="ml-1 w-4 h-4" />
-            </a>
-          </Button>
-        )}
-        {ysws.slack && (
-          <Button variant="secondary" size="sm" asChild>
-            <a href={ysws.slack} target="_blank" rel="noopener noreferrer">
-              Slack
-            </a>
-          </Button>
-        )}
-      </CardFooter>
+      {/* <CardFooter className="flex gap-2 justify-end">
+        <div>
+          {ysws.website && (
+            <Button variant="outline" size="sm" asChild>
+              <a href={ysws.website}>
+                Website <ExternalLink className="ml-1 w-4 h-4" />
+              </a>
+            </Button>
+          )}
+          {ysws.slack && (
+            <Button variant="outline" size="sm" asChild>
+              <SlackIcon />
+              <a href={ysws.slack}>
+                Slack channel <ExternalLink className="ml-1 w-4 h-4" />
+              </a>
+            </Button>
+          )}
+        </div>
+      </CardFooter> */}
     </Card>
   )
 }
