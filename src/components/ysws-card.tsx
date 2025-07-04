@@ -23,10 +23,10 @@ function statusText(status?: YSWSStatus): string {
 
 export default function YSWSEventCard({ ysws }: Props) {
   return (
-    <Card className="w-full max-w-md shadow-lg rounded-2xl border-muted">
+    <Card className="w-full max-w-lg shadow-lg rounded-2xl border-muted">
       <CardHeader>
-        <CardTitle className="flex justify-between items-center">
-          <span>{ysws.name}</span>
+        <CardTitle className="text-lg flex justify-between items-center">
+          <h2>{ysws.name}</h2>
           <Badge
             variant={
               ysws.status === "active"
@@ -34,6 +34,11 @@ export default function YSWSEventCard({ ysws }: Props) {
                 : ysws.status === "ended"
                 ? "destructive"
                 : "secondary"
+            }
+            className={
+              ysws.status === "active"
+                ? "bg-green-500 dark:bg-green-800 dark:text-white drop-shadow-[0_0_6px_rgba(34,197,94,0.5)]"
+                : ""
             }
           >
             {statusText(ysws.status)}
@@ -53,7 +58,7 @@ export default function YSWSEventCard({ ysws }: Props) {
           </p>
         )}
       </CardContent>
-      <CardFooter className="flex gap-2 justify-end">
+      <CardFooter className="flex flex-wrap gap-2 justify-end">
         {ysws.website && (
           <Button variant="outline" size="sm" asChild>
             <a href={ysws.website}>
