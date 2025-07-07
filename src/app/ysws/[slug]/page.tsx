@@ -49,13 +49,11 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className="space-y-6">
         <h3 className="text-2xl font-semibold mb-2">Description</h3>
         <p className="text-lg text-muted-foreground">{ysws.description}</p>
-
         {ysws.detailedDescription && (
           <div className="prose dark:prose-invert">
             <p>{ysws.detailedDescription}</p>
           </div>
         )}
-
         {ysws.requirements && ysws.requirements.length > 0 && (
           <div>
             <h2 className="text-xl font-semibold mb-2">Requirements</h2>
@@ -66,7 +64,6 @@ export default function Page({ params }: { params: { slug: string } }) {
             </ul>
           </div>
         )}
-
         {ysws.steps && ysws.steps.length > 0 && (
           <div>
             <h2 className="text-xl font-semibold mb-2">How to Join</h2>
@@ -77,7 +74,6 @@ export default function Page({ params }: { params: { slug: string } }) {
             </ol>
           </div>
         )}
-
         {ysws.details && ysws.details.length > 0 && (
           <div>
             <h2 className="text-xl font-semibold mb-2">Details</h2>
